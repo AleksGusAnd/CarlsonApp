@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+
+    <changeSet id="create-students-table" author="Aleks">
+        <createTable tableName="students">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="surmane" type="varchar(50)"/>
+            <column name="university_group" type="int">
+                <constraints nullable="false"
+                             foreignKeyName="fk_students_university_groups"
+                             references="university_groups(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
